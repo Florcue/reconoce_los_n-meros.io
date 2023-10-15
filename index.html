@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.pinimg.com/736x/d7/1a/3b/d71a3bfd6c8ab72f42d948c0067a2ff7.jpg');
+            /* Cambia 'tu-imagen-de-fondo.jpg' por la URL de tu imagen de fondo */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+    
+        
+
+        .container {
+            width: 600px;
+            margin: 200px auto;
+            text-align: center;
+            background-color: rgba(240, 207, 207, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .number {
+            width: 100px;
+            height: 100px;
+            background-color: #911574;
+            color: rgb(208, 172, 234);
+            font-size: 70px;
+            display: inline-block;
+            margin: 6px;
+            border-radius: 20%;
+            cursor: pointer;
+        }
+
+        .connected {
+            background-color: #f17f04;
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="startSound" src="sonido.mp3"></audio> 
+    <!-- Cambia 'tu-archivo-de-inicio.mp3' por la URL de tu 
+        archivo de inicio -->
+  <audio id="successSound" src="sonido.mp3"></audio>
+   <!-- Cambia 'tu-archivo-de-exito.mp3' por la URL de tu 
+    archivo de éxito -->
+
+    
+    <div class="container" id="container">
+        <div class="number" id="number1">1</div>
+        <div class="number" id="number2">2</div>
+        <div class="number" id="number3">3</div>
+        <div class="number" id="number4">4</div>
+        <div class="number" id="number5">5</div>
+        <div class="number" id="number5">6</div>
+        <div class="number" id="number5">7</div>
+        <div class="number" id="number5">8</div>
+        <div class="number" id="number5">9</div>
+        <div class="number" id="number5">10</div>
+        <div class="number" id="number5">11</div>
+        <div class="number" id="number5">12</div>
+        <div class="number" id="number5">13</div>
+        <div class="number" id="number5">14</div>
+        <div class="number" id="number5">15</div>
+
+    </div>
+    <script>
+
+playSuccessSound();
+
+
+
+
+        function shuffleNumbers() {
+            const container = document.getElementById('container');
+            for (let i = container.children.length; i >= 0; i--) {
+                container.appendChild(container.children[Math.floor(Math.random() * i)]);
+            }
+        }
+        shuffleNumbers();
+
+        let currentNumber = 1;
+
+        document.querySelectorAll('.number').forEach(number => {
+            number.addEventListener('click', () => {
+                if (parseInt(number.innerHTML) === currentNumber) {
+                    number.classList.add('connected');
+                    currentNumber++;
+                }
+
+                if (currentNumber === 16) {
+                    alert('¡Has conectado todos los números!');
+                }
+            });
+        });
+
+
+        function playSuccessSound() {
+      const successSound = document.getElementById('successSound');
+      successSound.play();
+    }
+    function stopBackgroundMusic() {
+      backgroundMusic.pause();
+    }
+    </script>
+</body>
+
+</html>
